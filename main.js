@@ -81,6 +81,34 @@
 
 // ---
 
+const fetch = require('node-fetch')
+let url = 'https://api.publicapis.org/entries'
+fetch(url)
+    .then((data) => data.json())
+    .then((newData) => {
+        let arr = newData.entries
+        
+        let num = Math.floor(Math.random() * 643) + 0;
+
+        let category = arr[num].Category
+        // console.log(arr)
+        let randoArr = []
+        console.log(`Your random category is ${category.toUpperCase()}\n`)
+        let newArr = arr.filter(x => {if(x.Category === category){
+            console.log(`API: ${x.API}`)
+            console.log(`Description: ${x.Description}`);
+            console.log(`Link :${x.Link}`)
+            console.log(`Category: ${x.Category}`)
+            console.log('---')
+        }})
+        console.log(newArr)
+        
+        
+    })
+
+    
+
+
 // #2
 // TOUGHER CHALLENGE
 
